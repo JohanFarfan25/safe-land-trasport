@@ -130,3 +130,46 @@
         color: #fff;
     }
 }
+
+.footer-nav {
+    /* Estilos generales */
+    text-align: center; /* Centra el contenido en el contenedor de navegación */
+}
+
+.footer-nav ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none; /* Elimina los puntos de lista */
+}
+
+.footer-nav li {
+    display: inline-block; /* Muestra los elementos de la lista en línea para pantallas grandes */
+    margin: 0 15px; /* Espaciado horizontal entre los elementos de la lista */
+}
+
+.footer-nav a {
+    display: flex;
+    align-items: center; /* Centra los iconos y el texto verticalmente */
+    color: white; /* Ajusta el color del texto de los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .footer-nav ul {
+        padding-left: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Cambia la dirección de los elementos a columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+    }
+
+    .footer-nav li {
+        display: block; /* Muestra los elementos de la lista en bloque para pantallas pequeñas */
+        margin-bottom: 10px; /* Espaciado vertical entre los elementos de la lista */
+    }
+
+    .footer-nav a {
+        font-size: 16px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+    }
+}
