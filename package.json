@@ -37,7 +37,7 @@
     ]
   },
   "optionalDependencies": {
-    "typescript": "5.0.4"
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
     "bootstrap": "4.6.2",
