@@ -1,12 +1,15 @@
 
-import React from "react";
+import React, { useContext } from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import { LanguageContext } from "../../context/LanguageContext";
 
 // core components
 
 function IndexHeader() {
+
+  const { language, translations} = useContext(LanguageContext);
   return (
     <>
       <div
@@ -25,10 +28,10 @@ function IndexHeader() {
         <div className="content-center">
           <Container>
             <div className="title-brand">
-              <h1 className="presentation-title">Safe Land Transport</h1>
+              <h1 className="presentation-title">{translations[language].home.header.title}</h1>
             </div>
             <h2 className="presentation-subtitle text-center">
-              ¡Fiabilidad sobre ruedas, donde quiera que te lleve el camino!
+              {translations[language].home.header.subtitle}
             </h2>
           </Container>
         </div>

@@ -1,5 +1,8 @@
 
-import React from "react";
+import React, { useContext } from "react";
+
+//Hoks
+
 
 // reactstrap components
 import {
@@ -16,11 +19,14 @@ import ProfilePageHeader from "../../components/Headers/ProfilePageHeader";
 import Footer from "../../components/Footers/Footer";
 import IndexNavbar from "../../components/Navbars/IndexNavbar";
 import { WhassapButton } from "../../assets/Buttons/WhassapButton";
+import { LanguageContext } from "../../context/LanguageContext";
+
 
 // core components
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
+  const { language, translations} = useContext(LanguageContext);
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -49,18 +55,15 @@ function ProfilePage() {
             </div>
             <div className="name">
               <h4 className="info-title" style={{ fontWeight: "400" }}>
-                Jeisson Andres Farfan Sierra <br />
+                {translations[language].profile.title}<br />
               </h4>
-              <h6 className="info-title">Conductor</h6>
+              <h6 className="info-title">{translations[language].profile.subtitle}</h6>
             </div>
           </div>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6" >
-              <p className="description" style={{fontSize:"16px"}}>
-                Conductor altamente experimentado con más de 25 años de trayectoria en la conducción de vehículos de transporte de pasajeros,
-                especializado en el transporte de turistas por todo el territorio colombiano.
-                A lo largo de su carrera, ha demostrado un compromiso excepcional con la seguridad vial, la puntualidad, y la satisfacción del cliente,
-                lo que le ha permitido establecer relaciones sólidas con hoteles, agencias de viajes y operadores turísticos, especialmente en la ciudad de Bogotá..
+              <p className="description" style={{ fontSize: "16px" }}>
+                {translations[language].profile.description}
               </p>
             </Col>
           </Row>
@@ -73,7 +76,7 @@ function ProfilePage() {
                     className={activeTab === "1" ? "active" : ""}
                     onClick={() => toggle("1")}
                   >
-                    Adaptabilidad
+                    {translations[language].profile.skills.one.title}
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -81,7 +84,7 @@ function ProfilePage() {
                     className={activeTab === "2" ? "active" : ""}
                     onClick={() => toggle("2")}
                   >
-                    Gestión del Tiempo
+                    {translations[language].profile.skills.two.title}
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -89,7 +92,7 @@ function ProfilePage() {
                     className={activeTab === "3" ? "active" : ""}
                     onClick={() => toggle("3")}
                   >
-                    Orientación al Detalle
+                    {translations[language].profile.skills.tree.title}
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -97,13 +100,13 @@ function ProfilePage() {
           </div>
           <TabContent className="following" activeTab={activeTab} style={{ marginTop: "2rem" }}>
             <TabPane className="text-center" tabId="1" id="option1">
-              <h3 className="text-muted ">Capacidad para adaptarse a diferentes condiciones climáticas y de carretera, garantizando siempre la seguridad y el confort de los pasajeros.</h3>
+              <h3 className="text-muted ">{translations[language].profile.skills.one.description}</h3>
             </TabPane>
             <TabPane className="text-center" tabId="2" id="option2">
-              <h3 className="text-muted">Habilidad para gestionar rutas y tiempos de manera eficiente, asegurando el cumplimiento de itinerarios preestablecidos.</h3>
+              <h3 className="text-muted">{translations[language].profile.skills.two.description}</h3>
             </TabPane>
             <TabPane className="text-center" tabId="3" id="option3">
-              <h3 className="text-muted">Meticuloso en la revisión diaria del vehículo y en la planificación de rutas, minimizando riesgos y optimizando la experiencia del pasajero.</h3>
+              <h3 className="text-muted">{translations[language].profile.skills.tree.description}</h3>
             </TabPane>
           </TabContent>
         </Container>
@@ -118,6 +121,7 @@ function ProfilePage() {
           transition: "background-color 0.3s ease",
         }}
         styleI={{ color: "white" }}
+        value={translations[language].navBar.whatsAppButton}
       />
       <Footer />
     </>

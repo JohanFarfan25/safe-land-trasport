@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+import React, { useContext } from "react";
+
 // nodejs library that concatenates strings
 import classnames from "classnames";
 // reactstrap components
@@ -13,11 +14,19 @@ import {
   Nav,
   Container,
   Row,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownItem,
+  DropdownMenu,
 } from "reactstrap";
 import { WhassapButton } from "../../assets/Buttons/WhassapButton";
 import { LogoSltHeader } from "../../assets/icons/Logos";
+import { LanguageContext } from "../../context/LanguageContext";
+import { FlagEps, FlagUsa } from "../../assets/icons/Flags";
 
 function IndexNavbar() {
+
+  const { language, translations, cambiarIdioma } = useContext(LanguageContext);
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -84,16 +93,31 @@ function IndexNavbar() {
                   href="/home"
                   title="Home"
                 >
-                  <i className="fa fa-home"></i> Home
+                  <i className="fa fa-home"></i> {translations[language].navBar.home}
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
                   href="/profile-page"
                 >
-                  <i className="fa fa-user" /> Perfil del condutor
+                  <i className="fa fa-user" /> {translations[language].navBar.profile}
                 </NavLink>
               </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  {translations[language].flags.img}-{translations[language].flags.title}
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem onClick={() => cambiarIdioma('es')}>
+                    <FlagEps />
+                    {translations[language].flags.es}
+                  </DropdownItem>
+                  <DropdownItem onClick={() => cambiarIdioma('en')}>
+                    <FlagUsa />
+                    {translations[language].flags.en}
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               <NavItem className="button-whassap">
                 <WhassapButton
                   className={"whatsapp-button-mobile"}
@@ -105,6 +129,7 @@ function IndexNavbar() {
                     transition: "background-color 0.3s ease",
                   }}
                   styleI={{ color: "white" }}
+                  value={translations[language].navBar.whatsAppButton}
                 />
               </NavItem>
             </Nav>
