@@ -21,7 +21,7 @@ function SectionDetails() {
                         styleI={{ color: "white" }}
                     />
                     <Row>
-                        <Col className="ml-auto mr-auto" md="8">
+                        <Col className="ml-auto mr-auto" md="8"  style={{ marginTop: "-3rem" }}>
                             <h2 className="title-center" style={{ fontWeight: "400" }}>Transporte terrestre seguro</h2>
                             <h5 className="description" style={{ marginTop: "1rem" }}>
                                 Amplia experiencia en el transporte de turistas nacionales e internacionales a los principales destinos turísticos de Colombia,
